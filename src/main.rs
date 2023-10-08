@@ -1,8 +1,7 @@
 use eframe::{egui, HardwareAcceleration, Theme};
 use webbrowser;
-use egui::{Id, include_image, Sense, Vec2};
-use image::GenericImageView;
-use std::sync::Arc;
+use egui::{Id, Sense, Vec2};
+
 
 
 
@@ -61,9 +60,10 @@ impl MyEguiApp {
     }
 }
 impl eframe::App for MyEguiApp {
+
+
     fn update(&mut self, ctx: &egui::Context ,frame: &mut eframe::Frame) {
-
-
+        
 
        egui::CentralPanel::default().show(ctx,|ui| {
            if ui.interact(ui.max_rect(),Id::new("window-drag"),Sense::drag()).dragged() {
@@ -71,12 +71,13 @@ impl eframe::App for MyEguiApp {
            }
 
 
-           ui.heading("Hi! I am pretham");
+           ui.heading("Hi! I am pretham Muthappa");
 
 
            ui.separator();
 
            ui.horizontal(|ui| {
+
 
 
         let _= ui.button("HOME");
@@ -96,9 +97,35 @@ impl eframe::App for MyEguiApp {
        } });
 
 
-             ui.separator();
+               ui.separator();
+
+              ui.heading("About");
 
               ui.label("Hello I am pretham muthappa , I am a final year computer science student. I like coding and creating open source projects and apart from coding i do pixel art illstration");
+
+              ui.separator();
+              ui.heading("project");
+
+             egui::CollapsingHeader::new("SnapCrawler")
+                 .show(ui,|ui| {
+                     ui.label("Snapercrawler is a webscrapper tool built using ")
+                 });
+
+           egui::CollapsingHeader::new("Event-Hive")
+               .show(ui,|ui| {
+                   ui.label("Snapercrawler is a webscrapper tool built using ")
+               });
+
+           egui::CollapsingHeader::new("Geek-Notes")
+               .show(ui,|ui| {
+                   ui.label("Snapercrawler is a webscrapper tool built using ")
+               });
+
+           egui::CollapsingHeader::new("Vulkan-rust")
+               .show(ui,|ui| {
+                   ui.label("Snapercrawler is a webscrapper tool built using ")
+               })
+
 
 
           });
