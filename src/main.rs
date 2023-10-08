@@ -1,15 +1,16 @@
 use eframe::{egui, HardwareAcceleration, Theme};
-use core::default::Default;
-use std::env::current_exe;
-use egui::{Color32, Context, Id, Sense, Vec2, Visuals};
-use egui::ecolor::rgb_from_hsv;
+use webbrowser;
+use egui::{Id, include_image, Sense, Vec2};
+use image::GenericImageView;
+use std::sync::Arc;
+
 
 
 fn main() {
 let nativeoption=eframe::NativeOptions{
     always_on_top: false,
     maximized: false,
-    decorated: false,
+    decorated: true,
     fullscreen: false,
     drag_and_drop_support: true,
     icon_data: None,
@@ -39,78 +40,67 @@ let nativeoption=eframe::NativeOptions{
     app_id: None,
     persist_window: false,
 };
-    eframe::run_native("my egui app", nativeoption, Box::new(|cc| Box::new(MyEguiApp::new(cc)))).expect("TODO: panic message");
+    eframe::run_native("Portfolio", nativeoption, Box::new(|cc| Box::new(MyEguiApp::new(cc)))).expect("TODO: panic message");
 
 }
 #[derive(Default)]
 struct MyEguiApp{
-    name:String,
-    age:String,
 
 }
-
 
 impl MyEguiApp {
-    fn new(cc:&eframe::CreationContext<'_>) -> Self {
-       MyEguiApp {
-           name:String::new(),
-           age:String::new(),
+    fn new(_cc:&eframe::CreationContext<'_>) -> Self {
 
-       };
         Self::default()
     }
+
+    fn open_url(&self,url:&str){
+        if let Err(err)=webbrowser::open(url){
+            eprintln!("failed to open link {:?} ",err);
+        }
+    }
 }
-
-
 impl eframe::App for MyEguiApp {
-    fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
+    fn update(&mut self, ctx: &egui::Context ,frame: &mut eframe::Frame) {
+
+
+
        egui::CentralPanel::default().show(ctx,|ui| {
            if ui.interact(ui.max_rect(),Id::new("window-drag"),Sense::drag()).dragged() {
                frame.drag_window();
            }
-         ui.heading("hello  welcome to egui");
+
+
+           ui.heading("Hi! I am pretham");
+
 
            ui.separator();
 
-ui.horizontal(|ui| {
-
-
-    let _ = ui.button("HOME");
-    let _ = ui.button("ABOUT");
-    let _ = ui.button("RESUME");
-    let _ = ui.button("CONTACT");
-});
-           ui.horizontal(|ui| {
-               ui.label("Enter your name");
-              let res=  ui.text_edit_singleline(&mut self.name);
-           });
-
            ui.horizontal(|ui| {
 
-               ui.label("enter your age");
-               ui.text_edit_singleline(&mut self.age);
+
+        let _= ui.button("HOME");
+       if ui.button("ABOUT").clicked() {
+        self.open_url("https://tidersky.me");
+        }
+
+
+        if ui.button("RESUME").clicked() {
+        self.open_url("https://drive.google.com/file/d/1jgWFzMDIrpW9odLQMoljTGtEeofRvf6W/view");
+        }
+
+        if ui.button("CONTACT").clicked() {
+
+          self.open_url("https://tidersky.me")
+
+       } });
+
+
+             ui.separator();
+
+              ui.label("Hello I am pretham muthappa , I am a final year computer science student. I like coding and creating open source projects and apart from coding i do pixel art illstration");
+
 
           });
-               ui.label(format!("my name is {} and my age is {}",&self.name,&self.age));
-
-           ui.separator();
-
-           egui::CollapsingHeader::new("show")
-               .show(ui,|ui| {
-                   ui.button("click me ");
-                   ui.spinner()
-               })
-
-
-
-
-
-
-
-
-
-
-
-       });
-    }
+     }
 }

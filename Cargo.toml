@@ -8,3 +8,5 @@ edition = "2021"
 [dependencies]
 egui = "0.23.0"
 eframe = "0.23.0"
+webbrowser = "0.5"
+image = "0.24.7"
