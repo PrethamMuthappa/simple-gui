@@ -708,7 +708,7 @@ version = "0.1.0"
 dependencies = [
  "eframe",
  "egui 0.23.0",
- "webbrowser 0.5.5",
+ "webbrowser",
 ]
 
 [[package]]
@@ -737,7 +737,7 @@ dependencies = [
  "raw-window-handle",
  "smithay-clipboard",
  "web-time",
- "webbrowser 0.8.11",
+ "webbrowser",
  "winit",
 ]
 
@@ -2401,17 +2401,6 @@ dependencies = [
 
 [[package]]
 name = "webbrowser"
-version = "0.5.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ecad156490d6b620308ed411cfee90d280b3cbd13e189ea0d3fada8acc89158a"
-dependencies = [
- "web-sys",
- "widestring",
- "winapi",
-]
-
-[[package]]
-name = "webbrowser"
 version = "0.8.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b2c79b77f525a2d670cb40619d7d9c673d09e0666f72c591ebd7861f84a87e57"
@@ -2426,12 +2415,6 @@ dependencies = [
  "url",
  "web-sys",
 ]
-
-[[package]]
-name = "widestring"
-version = "0.4.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c168940144dd21fd8046987c16a46a33d5fc84eec29ef9dcddc2ac9e31526b7c"
 
 [[package]]
 name = "winapi"
