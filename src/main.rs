@@ -1,5 +1,7 @@
 use eframe::{egui, HardwareAcceleration, Theme};
-use egui::{Id, Sense, Vec2};
+use eframe::epaint::Color32;
+use egui::{Id, Sense, Vec2,RichText};
+
 use webbrowser;
 
 fn main() {
@@ -117,7 +119,13 @@ impl eframe::App for MyEguiApp {
            egui::CollapsingHeader::new("Vulkan-rust")
                .show(ui,|ui| {
                    ui.label("Built a simple rust app using vulkano for the purpose of studying vulkan")
-               })
+               });
+
+           ui.separator();
+
+           ui.heading(RichText::new("Tech Stack").color(Color32::WHITE));
+
+
 
          });
 
