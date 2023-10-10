@@ -1,7 +1,6 @@
 use eframe::{egui, HardwareAcceleration, Theme};
 use eframe::epaint::Color32;
 use egui::{Id, Sense, Vec2,RichText};
-
 use webbrowser;
 
 fn main() {
@@ -13,7 +12,7 @@ fn main() {
         drag_and_drop_support: true,
         icon_data: None,
         initial_window_pos: None,
-        initial_window_size: Option::from(Vec2::new(300f32, 300f32)),
+        initial_window_size: Option::from(Vec2::new(350f32, 350f32)),
         min_window_size: None,
         max_window_size: None,
         resizable: true,
@@ -43,6 +42,8 @@ fn main() {
     )
     .expect("TODO: panic message");
 }
+
+
 #[derive(Default)]
 struct MyEguiApp {}
 
@@ -59,34 +60,29 @@ impl MyEguiApp {
 }
 impl eframe::App for MyEguiApp {
     fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
-
-
-
         egui::CentralPanel::default().show(ctx,|ui| {
-
          egui::ScrollArea::vertical().show(ui,|ui| {
-
-
 
            if ui.interact(ui.max_rect(),Id::new("window-drag"),Sense::drag()).dragged() {
                frame.drag_window();
            }
 
-           ui.heading("Hi! I am pretham Muthappa");
+           ui.heading(RichText::new("Hi! I am pretham Muthappa").color(Color32::WHITE));
 
            ui.separator();
            ui.horizontal(|ui| {
 
-        let _= ui.button("HOME");
-       if ui.button("ABOUT").clicked() {
+        let _= ui.button(RichText::new("HOME").color(Color32::WHITE));
+
+       if ui.button(RichText::new("ABOUT").color(Color32::WHITE)).clicked() {
         self.open_url("https://tidersky.me");
         }
 
-        if ui.button("RESUME").clicked() {
+        if ui.button(RichText::new("RESUME").color(Color32::WHITE)).clicked() {
         self.open_url("https://drive.google.com/file/d/1jgWFzMDIrpW9odLQMoljTGtEeofRvf6W/view");
         }
 
-        if ui.button("CONTACT").clicked() {
+        if ui.button(RichText::new("CONTACT").color(Color32::WHITE)).clicked() {
 
           self.open_url("https://tidersky.me")
 
@@ -94,12 +90,12 @@ impl eframe::App for MyEguiApp {
 
                ui.separator();
 
-              ui.heading("About");
+              ui.heading(RichText::new("About").color(Color32::WHITE));
 
               ui.label("Hello I am pretham muthappa , I am a final year computer science student. I like coding and creating open source projects and apart from coding i do pixel art illstration");
 
               ui.separator();
-              ui.heading("project");
+              ui.heading(RichText::new("Projects").color(Color32::WHITE));
 
              egui::CollapsingHeader::new("SnapCrawler")
                  .show(ui,|ui| {
@@ -121,9 +117,27 @@ impl eframe::App for MyEguiApp {
                    ui.label("Built a simple rust app using vulkano for the purpose of studying vulkan")
                });
 
-           ui.separator();
+             ui.separator();
 
-           ui.heading(RichText::new("Tech Stack").color(Color32::WHITE));
+             ui.heading(RichText::new("Tech Stack").color(Color32::WHITE));
+
+             ui.vertical(|ui| {
+
+                 ui.label("Javascript");
+                 ui.label("NodeJS");
+                 ui.label("ExpressJS");
+                 ui.label("MongoDB");
+                 ui.label("MYSQL");
+                 ui.label("Rust");
+                 ui.label("Python");
+                 ui.label("Flask");
+
+             });
+
+             ui.separator();
+             
+
+
 
 
 
