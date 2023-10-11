@@ -1,6 +1,8 @@
 use eframe::{egui, HardwareAcceleration, Theme};
+use eframe::emath::Align;
 use eframe::epaint::Color32;
-use egui::{Id, Sense, Vec2,RichText};
+use egui::{Id, Sense, Vec2, RichText,  Layout};
+
 use webbrowser;
 
 fn main() {
@@ -135,6 +137,14 @@ impl eframe::App for MyEguiApp {
              });
 
              ui.separator();
+
+             ui.vertical(| ui| {
+
+               ui.with_layout(Layout::top_down(Align::Center),|ui| {
+                   ui.label("@PrethamMuthappa");
+               })
+
+             })
              
 
 
