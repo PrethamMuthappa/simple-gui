@@ -69,10 +69,15 @@ impl eframe::App for MyEguiApp {
                frame.drag_window();
            }
 
-           ui.heading(RichText::new("Hi! I am pretham Muthappa").color(Color32::WHITE));
+             ui.with_layout(Layout::top_down(Align::Center),|ui| {
+                 ui.heading(RichText::new("Hi! I am Pretham Muthappa").color(Color32::WHITE));
+             });
+
+
 
            ui.separator();
            ui.horizontal(|ui| {
+
 
         let _= ui.button(RichText::new("HOME").color(Color32::WHITE));
 
